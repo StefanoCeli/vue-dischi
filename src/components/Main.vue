@@ -1,7 +1,7 @@
 <template>
   <main>
       <div class="container">
-        <div class="row ">
+        <div class="row d-flex justify-content-center">
           <Card
             v-for="(disco, index) in dischi" :key="index"
             :card="disco"
@@ -40,8 +40,9 @@ export default {
 
 <style lang="scss" scoped>
   main{
-    padding: 50px;
+    padding: 80px;
     background-color: #1E2D3B;
     height: calc(100vh - 70px);
+    overflow-y: auto;
   }
 </style>

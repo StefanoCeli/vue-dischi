@@ -1,7 +1,9 @@
 <template>
-      <div class="col d-flex justify-content-center align-items-center flex-column">
+      <div class="col-xs-12 col-sm-5 col-lg-2 mb-3 ms-2 me-2 p-3 p-lg-2 ">
         <a href="#"><img class="img-fluid" :src="card.poster" :alt="card.title"></a>
-        <h2>{{ card.title.toUpperCase() }}</h2>
+        <h1 class="text-center  mt-4 mb-4">{{ card.title.toUpperCase() }}</h1>
+        <h2 class="text-center">{{ card.author }}</h2>
+        <h2 class="text-center">{{ card.year }}</h2>
       </div>
 </template>
 
@@ -15,15 +17,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    
+@import '../assets/style/vars.scss';
+
 div{
-  min-width: 250px;
+  background-color: $brand-color;
   img{
-    height: 100px;
+    width: 100%;
+  }
+  h1{
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
   }
   h2{
-    font-size: 12px;
     color: #fff;
+    font-size: 14px;
+    opacity: .3;
   }
 }
 

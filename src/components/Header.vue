@@ -11,8 +11,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/style/vars.scss';
+
 header{
     height: 70px;
-    background-color: #2E3A46;
+    background-color: $brand-color;
 }
 </style>
