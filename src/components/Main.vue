@@ -4,7 +4,6 @@
       <div class="container"
         v-if= "loading === false"
       >
-        <h3 class="text-center text-white mb-3">Seleziona per genere</h3>
         <Select />
 
         <div class="row d-flex justify-content-center">
