@@ -23,6 +23,7 @@ div{
   background-color: $brand-color;
   img{
     width: 100%;
+    min-height: 213px;
   }
   h1{
     font-size: 16px;
