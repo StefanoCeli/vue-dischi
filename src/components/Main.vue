@@ -1,12 +1,17 @@
 <template>
   <main>
-      <div class="container">
+      <div class="container"
+        v-if= "loading === false"
+      >
         <div class="row d-flex justify-content-center">
           <Card
-            v-for="(disco, index) in dischi" :key="index"
-            :card="disco"
+            v-for= "(disco, index) in dischi" :key= "index"
+            :card= "disco"
             />
         </div>
+      </div>
+      <div v-if= "loading" class="loader d-flex justify-content-center align-items-center">
+        <div class="lds-facebook"><div></div><div></div><div></div></div>
       </div>
   </main>
 </template>
@@ -23,13 +28,15 @@ export default {
   data(){
     return {
       axios,
-      dischi:[]
+      dischi:[],
+      loading:true
     }
   },
   created(){
     axios.get('https://flynn.boolean.careers/exercises/api/array/music')
     .then(res => {
-      this.dischi = res.data.response
+      this.dischi = res.data.response;
+      this.loading = false;
     })
     .catch(err =>{
       console.log(err);
@@ -39,10 +46,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/style/utilities.scss';
+
   main{
     padding: 80px;
     background-color: #1E2D3B;
     height: calc(100vh - 70px);
     overflow-y: auto;
+    .loader{
+      height: calc(100vh - 230px);
+    }
   }
 </style>
