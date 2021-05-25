@@ -19,6 +19,7 @@
         </div>
       </div>
 
+      <!-- LOADER -->
       <div v-if= "loading" class="loader d-flex justify-content-center align-items-center">
         <div class="lds-facebook"><div></div><div></div><div></div></div>
       </div>
@@ -63,6 +64,7 @@ export default {
     }
   },
   computed:{
+    //tramite computed la funzione rimane in ascolto e si avvierà soltanto se noterà che un parametro è stato cambiato,facendo cosi la cpu sforza di meno 
     filterGenre(){
 
       if(this.musicGenre === ""){
@@ -83,7 +85,7 @@ export default {
     height: calc(100vh - 70px);
     overflow-y: auto;
     .loader{
-      height: calc(100vh - 230px);
+      height: calc(100vh - 130px);
     }
   }
 </style>
