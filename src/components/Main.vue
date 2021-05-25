@@ -1,8 +1,12 @@
 <template>
   <main>
+
       <div class="container"
         v-if= "loading === false"
       >
+        <h3 class="text-center text-white mb-3">Seleziona per genere</h3>
+        <Select />
+
         <div class="row d-flex justify-content-center">
           <Card
             v-for= "(disco, index) in dischi" :key= "index"
@@ -10,20 +14,24 @@
             />
         </div>
       </div>
+
       <div v-if= "loading" class="loader d-flex justify-content-center align-items-center">
         <div class="lds-facebook"><div></div><div></div><div></div></div>
       </div>
+
   </main>
 </template>
 
 <script>
 import axios from 'axios'
 import Card from './Card'
+import Select from './Select.vue'
 
 export default {
     name:'Main',
     components:{
-        Card
+        Card,
+        Select
     },
   data(){
     return {
