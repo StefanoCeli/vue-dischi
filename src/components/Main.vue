@@ -4,11 +4,16 @@
       <div class="container"
         v-if= "loading === false"
       >
-        <Select />
+
+      <h3 class=" text-white text-center mb-4">Seleziona un genere</h3>
+      <!-- richiamo all'interno di select l'evento custom 'changeGenre' e avvio la funzione 'catchGenre' -->
+        <Select
+          @changeGenre= "catchGenre" 
+         />
 
         <div class="row d-flex justify-content-center">
           <Card
-            v-for= "(disco, index) in dischi" :key= "index"
+            v-for= "(disco, index) in filterGenre" :key= "index"
             :card= "disco"
             />
         </div>
@@ -36,10 +41,12 @@ export default {
     return {
       axios,
       dischi:[],
-      loading:true
+      loading:true,
+      musicGenre:""
     }
   },
   created(){
+    //richiamo i dati tramite l'API
     axios.get('https://flynn.boolean.careers/exercises/api/array/music')
     .then(res => {
       this.dischi = res.data.response;
@@ -48,6 +55,21 @@ export default {
     .catch(err =>{
       console.log(err);
     })
+  },
+  methods:{
+    //funzione che ha come parametro la stringa passata dal componente select tramite $emit 
+    catchGenre(text){
+      this.musicGenre = text
+    }
+  },
+  computed:{
+    filterGenre(){
+
+      if(this.musicGenre === ""){
+        return this.dischi
+      }
+      return this.dischi.filter(item => item.genre === this.musicGenre)
+    }
   }
 }
 </script>
@@ -56,7 +78,7 @@ export default {
 @import '../assets/style/utilities.scss';
 
   main{
-    padding: 80px;
+    padding: 30px;
     background-color: #1E2D3B;
     height: calc(100vh - 70px);
     overflow-y: auto;

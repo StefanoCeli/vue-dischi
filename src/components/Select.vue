@@ -2,10 +2,10 @@
 
 <select 
 class="form-select text-white mb-5 ms-auto me-auto"  aria-label="Select genre"
-v-model="selectGenre"
+v-model= "selectGenre"
+@change= "changeValue"
 >
-    <option disabled value="">Seleziona un genere</option>
-    <option>Tutti</option>
+    <option value="" >Tutti</option>
     <option>Pop</option>
     <option>Rock</option>
     <option>Metal</option>
@@ -21,6 +21,11 @@ export default {
     data(){
         return{
             selectGenre:""
+        }
+    },
+    methods:{
+        changeValue(){
+            this.$emit('changeGenre',this.selectGenre)
         }
     }
 }
